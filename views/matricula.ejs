@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <form action="/confirmacion" method="post">
+            <div id="step1">
+                <h1>Seleccione un curso</h1>
+                <div class="form-group">
+                    <label for="curso">Curso:</label>
+                    <select class="form-control" id="curso" name="curso" required>
+                        <option value="Java">Java</option>
+                        <option value="PHP">PHP</option>
+                        <option value=".NET">.NET</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="nextStep(1)" type="button" disabled>Atras</button>
+                <button class="btn btn-primary" onclick="nextStep(2)" type="button">Siguiente</button>
+            </div>
+            <div id="step2" style="display: none;">
+                <h1>Seleccione un modulo</h1>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="modulo" value="Básico" id="c1">
+                    <label class="form-check-label" for="c1">
+                      Básico
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="modulo" value="Intermedio" id="c2">
+                    <label class="form-check-label" for="c2">
+                      Intermedio
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="modulo" value="Avanzado" id="c3">
+                    <label class="form-check-label" for="c3">
+                      Avanzado
+                    </label>
+                </div>
+                <button class="btn btn-primary" onclick="nextStep(1)" type="button">Atras</button>
+                <button class="btn btn-primary" onclick="nextStep(3)" type="button">Siguiente</button>
+            </div>
+            <div id="step3" style="display: none;">
+                <h1>Seleccione el metodo de pago</h1>
+                <div class="form-group">
+                    <select class="form-control" id="medioPago" name="medioPago" required>
+                        <option value="Tarjeta de credito">Tarjeta de crédito</option>
+                        <option value="Pago en efectivo">Pago en efectivo</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="nextStep(2)" type="button">Atras</button>
+                <button class="btn btn-primary" >Matricularme</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function nextStep(step) {
+            // Oculta todos los pasos
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById('step' + i).style.display = 'none';
+            }
+            // Muestra el paso solicitado
+            document.getElementById('step' + step).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
